@@ -27,32 +27,32 @@ class CallController < ApplicationController
    enable :sessions
 
   post '/' do
-      tropo_session = Tropo::Generator.parse(request.env["rack.input"].read)
-      puts tropo_session
-
-      if tropo_session['session'].has_key?("parameters")
-        if tropo_session['session']['parameters'].has_key?("conf_id") 
-
-          session["conf_id"] = tropo_session['session']['parameters']['conf_id']
-          puts "confid ==> #{session['confid']}"
-          session['operator_number']=tropo_session['session']['parameters']['operator_number'] 
-          puts "operator_number ==> #{session['operator_number']}"
-         
-         tropo = Tropo::Generator.new do
-           on :event => 'continue', :next => '/call_operator.json'
-         end
-       else
-#         conf_id=rand(1000000).to_s
-         session["conf_id"] = rand(1000000).to_s
-         puts "confid ==> #{session['confid']}"
-         call_operator(conf_id)  # call call_operator method which starts second session to get our 'operator' on the confernece
-         tropo = Tropo::Generator.new do
-           on :event => 'continue', :next => '/conference.json?conf_id='+conf_id
-           call(:to=>tropo_session['session']['parameters']['participant_number'],:from => '4078350065')
-         end
-      end
-     end
-     tropo.response
+#       tropo_session = Tropo::Generator.parse(request.env["rack.input"].read)
+#       puts tropo_session
+# 
+#       if tropo_session['session'].has_key?("parameters")
+#         if tropo_session['session']['parameters'].has_key?("conf_id") 
+# 
+#           session["conf_id"] = tropo_session['session']['parameters']['conf_id']
+#           puts "confid ==> #{session['confid']}"
+#           session['operator_number']=tropo_session['session']['parameters']['operator_number'] 
+#           puts "operator_number ==> #{session['operator_number']}"
+#          
+#          tropo = Tropo::Generator.new do
+#            on :event => 'continue', :next => '/call_operator.json'
+#          end
+#        else
+# #         conf_id=rand(1000000).to_s
+#          session["conf_id"] = rand(1000000).to_s
+#          puts "confid ==> #{session['confid']}"
+#          call_operator(conf_id)  # call call_operator method which starts second session to get our 'operator' on the confernece
+#          tropo = Tropo::Generator.new do
+#            on :event => 'continue', :next => '/conference.json?conf_id='+conf_id
+#            call(:to=>tropo_session['session']['parameters']['participant_number'],:from => '4078350065')
+#          end
+#       end
+#      end
+#      tropo.response  
   end
 
   post '/call_operator.json' do

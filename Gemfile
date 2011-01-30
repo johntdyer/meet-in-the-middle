@@ -12,4 +12,5 @@ gem 'json'
 gem 'tropo-webapi-ruby'
 gem 'gdirections'
 gem 'hashie'
+gem 'sinatra'
                        
