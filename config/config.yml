@@ -1,0 +1,16 @@
+development: &non_production_settings
+  :google_maps:
+      :api_key: "ABQIAAAAmT4HTUYKdvGqcdPCdYMIchSp2RdxVNDznV5ZBnMxyVSemJikNhQlGWMzvqUgCzpjEK67J9TDS4FqyA"
+  :site:
+    :title: "[Title]"
+    :address: "http://localhost:3000"
+
+production:
+  :google_maps:
+    :api_key: "ABQIAAAAmT4HTUYKdvGqcdPCdYMIchSp2RdxVNDznV5ZBnMxyVSemJikNhQlGWMzvqUgCzpjEK67J9TDS4FqyA"
+  :site:
+    :title: "[Title]"
+    :address: "[Address]"
+    
+    
+    api_key: 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first: MyString
+  last: MyString
+  phone: MyString
+  starting_lat: 1.5
+  starting_long: 1.5
+
+two:
+  first: MyString
+  last: MyString
+  phone: MyString
+  starting_lat: 1.5
+  starting_long: 1.5
