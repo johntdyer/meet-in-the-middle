@@ -20,42 +20,45 @@ MeetInTheMiddle::Application.routes.draw do
    
   
   
-     match "/call(/*data)", :to => proc { |env| 
+     match "/call", :to => proc { |env| 
 
         req=Rack::Request.new(env)
 
         [200, 
         { "Content-Type" => "application/json" }, 
 
-              call({
-                :trip_id=>env["action_dispatch.request.path_parameters"],
-                :phone_number=>env["QUERY_STRING"],
-
-                })
-
-
+              call({       
+                            :req=>req
+                          })
+              #              :trip_id=>env["action_dispatch.request.path_parameters"],
+              #              :phone_number=>env["QUERY_STRING"],
+              # 
+              #              })        
          ] }
          
   
   
-  def call(opt={}) 
-    t = Trip.find(opt[:trip_id][:data])
-    call_json = '{
-                     "tropo": [
-                         {
-                             "message": {
-                                 "say": {
-                                     "value": "Hello, '+t.contact.first+' is running late, we are just calling you to let you know.  Thank you for using meet me in the middle"
-                                 },
-                                 "to": "'+t.contact.phone+'",
-                                 "from": "4075551212",
-                                 "voice": "dave",
-                                 "timeout": 10,
-                                 "answerOnMedia": false
-                             }
-                         }
-                     ]
-                 }' 
+  def call(opt={})                   
+    puts opt[:env]
+    req = Rack::Request.new(opt[:env])    
+    puts req.params.inspect
+    # t = Trip.find(opt[:trip_id][:data])
+    #    call_json = '{
+    #                     "tropo": [
+    #                         {
+    #                             "message": {
+    #                                 "say": {
+    #                                     "value": "Hello, '+t.contact.first+' is running late, we are just calling you to let you know.  Thank you for using meet me in the middle"
+    #                                 },
+    #                                 "to": "'+t.contact.phone+'",
+    #                                 "from": "4075551212",
+    #                                 "voice": "dave",
+    #                                 "timeout": 10,
+    #                                 "answerOnMedia": false
+    #                             }
+    #                         }
+    #                     ]
+    #                 }'    
   end
   
  # LateURL ---> http://localhost:3000/poll/1?lat=28.51246&lng=-81.216396
@@ -97,7 +100,8 @@ MeetInTheMiddle::Application.routes.draw do
        }.to_json
 
     end
-  end
+  end      
+  
    def get_address_from_cordinates(cordinates)
       res=Geokit::Geocoders::GoogleGeocoder.reverse_geocode cordinates
       res.full_address
