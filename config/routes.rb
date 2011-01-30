@@ -47,8 +47,8 @@ MeetInTheMiddle::Application.routes.draw do
                     }'
   end
 
- # LateURL ---> http://localhost:3000/poll/1?lat=28.51246&lng=-81.216396
- # onTimeURL ---> http://localhost:3000/poll/1?lat=28.51246&lng=-81.216396
+ # LateURL ---> http://myrailz.com/poll/1?lat=28.51246&lng=-81.216396
+ # onTimeURL ---> http://myrailz.com/poll/1?lat=28.51246&lng=-81.216396
  
   def poll(opt={})
 

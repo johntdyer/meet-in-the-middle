@@ -40,12 +40,28 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.xml
   def create
-    @trip = Trip.new(params[:trip])
+    #@trip = Trip.new(params[:trip])
+    
+    @trip = Trip.new({
+        :phone_guid=>params[:phone_guid],
+        :user_name=>params[:user_name],
+        :destination=>params[:destination]
+      }
+      
+      Trip.find_by_phone_guid(params[:phone_guid])
 
     respond_to do |format|
       if @trip.save
+        Contact.new({
+          :contact_first=>params[:contact_first],
+          :contact_last=>params[:contact_last],
+          :contact_phone=>params[:contact_phone], 
+          :trip_id=>t.id
+        }) 
+        
         format.html { redirect_to(@trip, :notice => 'Trip was successfully created.') }
         format.xml  { render :xml => @trip, :status => :created, :location => @trip }
+        
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @trip.errors, :status => :unprocessable_entity }
