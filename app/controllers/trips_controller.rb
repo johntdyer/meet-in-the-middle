@@ -1,16 +1,11 @@
 class TripsController < ApplicationController
-  
-  raw_config = File.read(RAILS_ROOT + "/config/config.yml")
-  APP_CONFIG = YAML.load(raw_config)[RAILS_ENV]
-    
   # GET /trips
   # GET /trips.xml
   def index
     @trips = Trip.all
 
     respond_to do |format|
-      format.html # index.html.erb 
-      format.json {render :json=>@trips}
+      format.html # index.html.erb
       format.xml  { render :xml => @trips }
     end
   end
@@ -21,8 +16,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb      
-      format.json {render :json=>@trip}
+      format.html # show.html.erb
       format.xml  { render :xml => @trip }
     end
   end
@@ -35,9 +29,7 @@ class TripsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @trip }
-      format.json {render :json=>@trip}
     end
-
   end
 
   # GET /trips/1/edit
@@ -48,7 +40,6 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.xml
   def create
-    
     @trip = Trip.new(params[:trip])
 
     respond_to do |format|

@@ -1,11 +1,10 @@
-
-<h1>test</h1>
+<h1>Listing trips</h1>
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Orig eta</th>
-    <th>Participant</th>
+    <th>Original eta</th>
+    <th>Phone guid</th>
+    <th>Latest eta</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,9 +12,9 @@
 
 <% @trips.each do |trip| %>
   <tr>
-    <td><%= trip.user_id %></td>
-    <td><%= trip.orig_eta %></td>
-    <td><%= trip.participant %></td>
+    <td><%= trip.original_eta %></td>
+    <td><%= trip.phone_guid %></td>
+    <td><%= trip.latest_eta %></td>
     <td><%= link_to 'Show', trip %></td>
     <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
     <td><%= link_to 'Destroy', trip, :confirm => 'Are you sure?', :method => :delete %></td>

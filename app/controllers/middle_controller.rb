@@ -13,9 +13,11 @@ require 'uri'
                               :location_2=>location_2,
                               :category=>params[:data][:category]
                             }))
-
+                            logger.debug { "\n\n #{result.class}" }
+     final_result = result['response'].merge({:location_1=>location_1,:location_2=>location_2})
+      
       respond_to do |format|
-        format.json {render :json=> result['response']['data'].to_json }
+        format.json {render :json=> final_result }
       end
  end
 

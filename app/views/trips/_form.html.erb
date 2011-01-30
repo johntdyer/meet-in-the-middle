@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label :original_eta %><br />
+    <%= f.datetime_select :original_eta %>
   </div>
   <div class="field">
-    <%= f.label :orig_eta %><br />
-    <%= f.text_field :orig_eta %>
+    <%= f.label :phone_guid %><br />
+    <%= f.text_field :phone_guid %>
   </div>
   <div class="field">
-    <%= f.label :participant %><br />
-    <%= f.text_field :participant %>
+    <%= f.label :latest_eta %><br />
+    <%= f.datetime_select :latest_eta %>
   </div>
   <div class="actions">
     <%= f.submit %>
