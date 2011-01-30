@@ -10,4 +10,6 @@ gem 'hirb'
 gem 'rest-client', :git=>"https://github.com/archiloque/rest-client.git"
 gem 'json'
 gem 'tropo-webapi-ruby'
+gem 'gdirections'
+gem 'hashie'
                        

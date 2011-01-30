@@ -10,25 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110129204817) do
+ActiveRecord::Schema.define(:version => 20110130061436) do
 
-  create_table "participants", :force => true do |t|
+  create_table "contacts", :force => true do |t|
     t.string   "first"
     t.string   "last"
+    t.integer  "trip_id"
     t.string   "phone"
-    t.float    "start_lat"
-    t.float    "start_long"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "trip_id"
-    t.datetime "original_eta"
-    t.datetime "current_eta"
   end
 
   create_table "trips", :force => true do |t|
+    t.datetime "original_eta"
+    t.string   "phone_guid"
+    t.datetime "latest_eta"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "participants"
+    t.integer  "contact"
+    t.string   "destination"
   end
 
 end

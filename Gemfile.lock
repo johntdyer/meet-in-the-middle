@@ -38,8 +38,12 @@ GEM
     arel (2.0.4)
     awesome_print (0.3.1)
     builder (2.1.2)
+    crack (0.1.8)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    gdirections (0.1.1)
+      hashie
+      httparty
     geokit (1.5.0)
     geokit-rails3 (0.1.2)
       geokit (~> 1.5.0)
@@ -47,6 +51,8 @@ GEM
     google_directions (0.1.4)
     hashie (1.0.0)
     hirb (0.3.6)
+    httparty (0.7.3)
+      crack (= 0.1.8)
     i18n (0.4.2)
     json (1.4.6)
     json_pure (1.5.1)
@@ -91,8 +97,10 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  gdirections
   geokit-rails3
   google_directions
+  hashie
   hirb
   json
   nokogiri

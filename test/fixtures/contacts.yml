@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first: MyString
+  last: MyString
+  trip_id: 1
+  phone: MyString
+
+two:
+  first: MyString
+  last: MyString
+  trip_id: 1
+  phone: MyString
