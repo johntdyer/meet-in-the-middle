@@ -13,4 +13,6 @@ gem 'tropo-webapi-ruby'
 gem 'gdirections'
 gem 'hashie'
 gem 'sinatra'
+gem 'hoptoad_notifier'
+
                        
