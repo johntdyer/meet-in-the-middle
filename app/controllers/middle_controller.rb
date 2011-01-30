@@ -15,7 +15,7 @@ require 'uri'
                             }))
 
       respond_to do |format|
-        format.json {render :json=> result['response']['data'] }
+        format.json {render :json=> result['response']['data'].to_json }
       end
  end
 
@@ -26,7 +26,7 @@ require 'uri'
  end
  
  def get_list_of_locations(opt={}) 
-   uri = URI.parse("http://api.factual.com/v2/tables/bi0eJZ/read?filters=%7B%22$search%22:%22#{opt[:category]}%22,%22$loc%22:%7B%22$within%22:%7B%22$center%22:%5B%5B#{get_mid_point(opt[:location_1],opt[:location_2])}%5D,1600%5D%7D%7D%7D&api_key=S8bAIJhnEnVp05BmMBNeI17Kz3waDgRYU4ykpKU2MVZAMydjiuy88yi1vhBxGsZC")
+   uri = URI.parse("http://api.factual.com/v2/tables/bi0eJZ/read?filters=%7B%22$search%22:%22#{opt[:category]}%22,%22$loc%22:%7B%22$within%22:%7B%22$center%22:%5B%5B#{get_mid_point(opt[:location_1],opt[:location_2])}%5D,3200%5D%7D%7D%7D&api_key=S8bAIJhnEnVp05BmMBNeI17Kz3waDgRYU4ykpKU2MVZAMydjiuy88yi1vhBxGsZC")
    http = Net::HTTP.new(uri.host, uri.port)
    request = Net::HTTP::Get.new(uri.request_uri)
    response = http.request(request)
